@@ -1,16 +1,15 @@
 ﻿using Amazon.CDK;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace PstJamMesh
+namespace cdk
 {
     sealed class Program
     {
         public static void Main(string[] args)
         {
+            var stackBranchName = System.Environment.GetEnvironmentVariable("STACK_BRANCH_NAME");
             var app = new App();
-            new PstJamMeshStack(app, "PstJamMeshStack");
+            new PingPongStack(app, $"ping-pong-{stackBranchName}");
             app.Synth();
         }
     }
